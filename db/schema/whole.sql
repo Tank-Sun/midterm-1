@@ -19,7 +19,8 @@ CREATE TABLE orders (
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
   start_time TIMESTAMP NOT NULL,
   end_time TIMESTAMP NOT NULL,
-  ready BOOLEAN NOT NULL
+  ready BOOLEAN NOT NULL,
+  confirm BOOLEAN NOT NULL
 );
 
 CREATE TABLE restaurants (
