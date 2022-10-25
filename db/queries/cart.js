@@ -2,7 +2,7 @@ const db = require('../connection');
 
 const getFoods = () => {
   return db.query(`
-  SELECT order_details.*, menuitems.name, menuitems.price * quantity AS total_price FROM order_details
+  SELECT order_details.*, menuitems.name, price * quantity AS total_price FROM order_details
   JOIN orders ON orders.id = order_id
   JOIN clients ON clients.id = client_id
   JOIN menuitems ON menuitems.id = menuitem_id
