@@ -5,16 +5,10 @@ const foodQueries = require('../db/queries/cart');
 
 // show all the choosen foods
 router.get('/', (req, res) => {
-  foodQueries.getFoods()
-    .then((foods) => {
-      const templateVars = { foods: foods };
-      res.render('cart', templateVars);
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
+  res.render('cart');
 });
 
+// edit the quantity
 router.post('/:id', (req, res) => {
   const newQuantity = req.body.newQuantity;
   foodQueries.editQuantity(req.params.id, newQuantity)
@@ -26,6 +20,7 @@ router.post('/:id', (req, res) => {
     });
 });
 
+// delete one kinds of food
 router.post('/:id/delete', (req, res) => {
   foodQueries.deleteFood(req.params.id)
     .then(() => {
@@ -36,10 +31,10 @@ router.post('/:id/delete', (req, res) => {
     });
 });
 
+// confirm the order
 router.post('/', (req, res) => {
   foodQueries.confirmOrder()
     .then(() => {
-
       res.redirect('/');
     })
     .catch(err => {
