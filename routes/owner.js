@@ -13,29 +13,39 @@ router.use((req, res, next) => {
   // if (!req.session.user_id) {
   //   return res.redirect('/login');
   // }
-  console.log('inside owner router');
+  console.log('inside owner11 router');
 
   next();
 });
 
 //GET restaurants/
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM orders WHERE restaurants.id = 201;')
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready
+  FROM orders
+  JOIN clients ON clients.id = client_id;`)
   .then((response) => {
      const order = response.rows;
-     res.json(order);
-
+     res.json(order)
     //res.render('restaurant', { id: process.env.ID });
+  })
+  .catch(err => {
+    console.log("catch:",err.message);
   });
 });
 
 
 // GET /orders/:id/
 router.get('/:id', (req, res) => {
-  db.query('SELECT * FROM orders WHERE orders.id = $1 AND restaurants.id = 201;', [req.params.id])
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready
+  FROM orders
+  JOIN clients ON clients.id = client_id
+  WHERE orders.id = $1;`, [req.params.id])
     .then((response) => {
       const order = response.rows[0];
       res.json(order);
+    })
+    .catch(err => {
+      console.log("catch:",err.message);
     });
 });
 

@@ -7,9 +7,70 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../db/connection');
 
+router.use((req, res, next) => {
+  // if (!req.session.user_id) {
+  //   return res.redirect('/login');
+  // }
+  console.log('inside owner router');
+
+  next();
+});
+
+//owner
+//GET restaurants orders/
 router.get('/', (req, res) => {
-  res.render('users');
-}); 
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready
+  FROM orders
+  JOIN clients ON clients.id = client_id;`)
+  .then((response) => {
+     const order = response.rows;
+     res.json(order)
+    //res.render('restaurant', { id: process.env.ID });
+  })
+  .catch(err => {
+    console.log("catch:",err.message);
+  });
+});
+
+
+// GET /restaurants  orders/:id/
+router.get('/:id', (req, res) => {
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready
+  FROM orders
+  JOIN clients ON clients.id = client_id
+  WHERE orders.id = $1;`, [req.params.id])
+    .then((response) => {
+      const order = response.rows[0];
+      res.json(order);
+    })
+    .catch(err => {
+      console.log("catch:",err.message);
+    });
+});
+
+//take the order, start cooking
+//Edit  POST /orders/:id
+
+
+
+
+
+//finish the order
+//Delete  POST/orders/:id/delete
+
+
+////login
+//app.get('/login/:id', (req, res) => {
+//  // using encrypted cookies
+//  req.session.user_id = req.params.id;
+
+//  // or using plain-text cookies
+//  res.cookie('user_id', req.params.id);
+
+//  // send the user somewhere
+//  res.redirect('/');
+//});
 
 module.exports = router;
