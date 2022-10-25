@@ -5,7 +5,8 @@ const historyQueries = require('../db/queries/history');
 
 // show all the order history
 router.get('/', (req, res) => {
-  historyQueries.getRecords()
+  const id = req.session.user_id;
+  historyQueries.getRecords(id)
     .then((records) => {
       res.json(records);
     })

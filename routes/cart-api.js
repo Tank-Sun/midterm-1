@@ -5,7 +5,8 @@ const foodQueries = require('../db/queries/cart');
 
 // show all the choosen foods
 router.get('/', (req, res) => {
-  foodQueries.getFoods()
+  const id = req.session.user_id;
+  foodQueries.getFoods(id)
     .then((foods) => {
       res.json(foods);
     })

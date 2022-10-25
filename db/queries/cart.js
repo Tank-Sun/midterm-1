@@ -1,14 +1,14 @@
 const db = require('../connection');
 
-const getFoods = () => {
+const getFoods = (id) => {
   return db.query(`
     SELECT order_details.*, menuitems.name, price * quantity AS total_price FROM order_details
     JOIN orders ON orders.id = order_id
     JOIN clients ON clients.id = client_id
     JOIN menuitems ON menuitems.id = menuitem_id
-    WHERE confirm = FALSE AND clients.id = 3
+    WHERE confirm = FALSE AND clients.id = $1
     ORDER BY order_details.id
-  `)
+  `, [id])
     .then(data => {
       return data.rows;
     });
