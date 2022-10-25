@@ -4,9 +4,23 @@ $(document).ready(function() {
 
     const $food = $(`
       <div>
+        <div>${food.id}</div>
         <div>${food.name}</div>
         <div>${food.quantity}</div>
-        <div>${food.price}</div>
+        <form action="/foods/${food.id}" method="POST">
+          <div>
+            <label for="newQuantity">new quantity:</label>
+            <input
+              type="number"
+              name="newQuantity"
+            />
+            <button type="submit">Edit</button>
+          </div>
+        </form>
+        <div>${food.total_price}</div>
+        <form method="POST" action="/foods/${food.id}/delete">
+          <button type="submit">Delete</button>
+        </form>
       </div>
     `);
     return $food;
@@ -27,8 +41,12 @@ $(document).ready(function() {
       method: 'GET'
     })
     .then(function(foods) {
-      console.log(foods);
-      renderFoods(foods);
+      if (foods.length) {
+        console.log(foods);
+        renderFoods(foods);
+      } else {
+        $('#cart').replaceWith('<p>The cart is empty.</p>');
+      }
     })
     .catch((error) => {
       console.log('error:', error);

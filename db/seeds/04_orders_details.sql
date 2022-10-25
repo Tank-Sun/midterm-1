@@ -1,4 +1,4 @@
-INSERT INTO order_detais (menuitem_id, order_id, quantity, price)
+INSERT INTO order_details (menuitem_id, order_id, quantity, price)
 VALUES
 (1, 1, 1, 10),
 (4, 2, 1, 18),
