@@ -1,14 +1,21 @@
 $(document).ready(function() {
   // create the record HTML structure when passing in the record object
   const createRecordElement = function(record) {
-
-   const $record = $(`
+    if (record.ready) {
+    return $record = $(`
      <div>
        <div>${record.id}</div>
-       <div>${record.ready}</div>
+        <div>Finished</div>
      </div>
-   `);
-   return $record;
+    `);
+    } else {
+      return $record = $(`
+      <div>
+        <div>${record.id}</div>
+         <div>Pending</div>
+      </div>
+     `);
+    }
  };
 
  // Loop through the records data, turn them into HTML and add them in chronological order

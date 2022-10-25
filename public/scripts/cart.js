@@ -4,9 +4,9 @@ $(document).ready(function() {
 
     const $food = $(`
       <div>
-        <div>${food.id}</div>
-        <div>${food.name}</div>
-        <div>${food.quantity}</div>
+        <div>food.id: ${food.id}</div>
+        <div>food name: ${food.name}</div>
+        <div>quantity: ${food.quantity}</div>
         <form action="/foods/${food.id}" method="POST">
           <div>
             <label for="newQuantity">new quantity:</label>
@@ -17,7 +17,7 @@ $(document).ready(function() {
             <button type="submit">Edit</button>
           </div>
         </form>
-        <div>${food.total_price}</div>
+        <div>price: ${food.total_price}</div>
         <form method="POST" action="/foods/${food.id}/delete">
           <button type="submit">Delete</button>
         </form>
