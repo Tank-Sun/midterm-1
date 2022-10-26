@@ -44,12 +44,16 @@ router.get('/', (req, res) => {
 
 // GET /restaurants  orders/:id/
 router.get('/:id', (req, res) => {
-  db.query(`SELECT orders.id, clients.name, start_time, end_time, confirm,ready
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture
   FROM orders
   JOIN clients ON clients.id = client_id
-  WHERE orders.id = $1;`,[req.params.id])
+  JOIN order_detais ON order_id = orders.id
+  JOIN menuitems ON menuitem_id = menuitems.id
+  WHERE orders.id = $1
+  ORDER BY menuitem_id;`,[req.params.id])
     .then(data => {
-      const widgets = data.rows[0];
+      const widgets = data.rows;
+      console.log(widgets);
       const templateVars = { order: widgets};
       //res.json(widgets );
       res.render("restaurantOrderDetails", templateVars);
@@ -68,12 +72,9 @@ router.post('/:id', (req, res) => {
   SET end_time = start_time + $1
   WHERE orders.id = $2
   RETURNING *;`,[req.body.fulfillTime*60, req.params.id])
-    .then((result) => {
-      console.log(result.rows[0]);
-      const widgets = result.rows[0];
-      const templateVars = { order: widgets};
-      //res.json(widgets );
-      res.render("restaurantOrderDetails", templateVars);
+    .then((data) => {
+      console.log(data.rows);
+      res.redirect(`/api/widgets`);
     })
     .catch(err => {
       res
@@ -87,7 +88,22 @@ router.post('/:id', (req, res) => {
 
 //finish the order
 //Delete  POST/orders/:id/delete
-
+router.post('/:id/delete', (req, res) => {
+  return db.query(`
+  UPDATE orders
+SET ready = TRUE,end_time = now()
+  WHERE orders.id = $1
+  RETURNING *;`,[req.params.id])
+    .then((data) => {
+      console.log(data.rows);
+      res.redirect(`/api/widgets`);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+});
 
 
 

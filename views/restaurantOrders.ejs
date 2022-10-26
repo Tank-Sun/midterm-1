@@ -27,13 +27,16 @@
     <h1>CurrentOrders</h1>
   </div>
 
-  <% include partials/_restaurantButtons %>
 
   <main style="margin: 1em;">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Order List</th>
+          <th scope="col">Order id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Start time</th>
+          <th scope="col">Finish time</th>
+          <th scope="col">Ready</th>
           <th scope="col">Edit</th>
         </tr>
       </thead>
@@ -44,6 +47,7 @@
               <td><%= urls[id].name %></td>
               <td><%= urls[id].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
               <td><%= urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+              <td><%= urls[id].ready %></td>
             <td><form method="GET" action='/api/widgets/<%= urls[id].id%>'>
               <button type="submit" class="btn btn-primary">Edit</button>
               </form></td>

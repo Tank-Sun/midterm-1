@@ -33,21 +33,27 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Order List</th>
-          <th scope="col">Edit</th>
+          <th scope="col">Order id</th>
+          <th scope="col">Start time</th>
+          <th scope="col">Finish time</th>
 
-
+        </tr>
       </thead>
       <tbody>
+<tr>
+         <tr>
+          <img src="<%= order[0].picture %>">
+            <td><%= order[0].id%></td>
+              <!--<td><%= order[0].name %></td>-->
+              <td><%= order[0].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+              <td><%= order[0].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+          </tr>
 
-         </tr>
-            <td><%= order.id%></td>
-              <td><%= order.name %></td>
-              <td><%= order.start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
-              <td><%= order.end_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
-
-            <td>
-              <form class="form-inline" action="/api/widgets/<%= order.id %>" method="POST">
+          <% for (let id in order) { %>
+          <td><%= order[id].description%></td>
+<br><% } %>
+<tr>
+            <div> <form class="form-inline" action="/api/widgets/<%= order[0].id%>" method="POST">
                 <div class="form-group mb-2 text-center m-auto">
 
                   <label>Change fulfill time(min)</label>
@@ -59,12 +65,17 @@
                     style="width: 300px; margin: 1em"
                   />
                   <button type="submit" class="btn btn-primary">Submit</button>
+
                 </div>
                 </form>
+                <td><form method="POST" action="/api/widgets/<%= order[0].id%>/delete">
+                  <button type="submit" class="btn btn-primary">Finish</button>
+                  </form></td>
+</div></tr>
 
-            </td>
-          </tr>
 
+
+</tr>
 
       </tbody>
     </table>
