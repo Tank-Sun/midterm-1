@@ -42,7 +42,6 @@ $(document).ready(function() {
     })
     .then(function(foods) {
       if (foods.length) {
-        console.log(foods);
         renderFoods(foods);
       } else {
         $('#cart').replaceWith('<p>Your cart is empty.</p>');

@@ -36,7 +36,12 @@ router.post('/:id/delete', (req, res) => {
 router.post('/', (req, res) => {
   foodQueries.confirmOrder()
     .then(() => {
-      Twilio.sendMessage()
+      return foodQueries.getOrderNotification();
+    })
+    .then((orderInformation) => {
+      const id = orderInformation.id;
+      const time = orderInformation.start_time.toLocaleString('en-GB', { timeZone: 'UTC' });
+      Twilio.sendMessageToOwner(id, time);
     })
     .then(() => {
       res.redirect('/');

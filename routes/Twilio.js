@@ -5,14 +5,14 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-const sendMessage = () => {
+const sendMessageToOwner = (id, time) => {
   return client.messages
     .create({
-      body: 'You got a new order.',
+      body: `You got a new order at ${time}. The order ID is ${id}.`,
       from: '+14634002509',
       to: '+15879301260'
     })
     .then(message => console.log(message.sid));
 };
 
-module.exports = { sendMessage };
+module.exports = { sendMessageToOwner };

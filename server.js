@@ -66,9 +66,9 @@ app.get('/', (req, res) => {
 app.get('/login/:id', (req, res) => {
   // using encrypted cookies
   req.session.user_id = req.params.id;
-    // send the user somewhere
-    res.redirect('/');
-  });
+  // send the user somewhere
+  res.redirect('/');
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

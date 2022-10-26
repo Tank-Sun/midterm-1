@@ -2,17 +2,25 @@ $(document).ready(function() {
   // create the record HTML structure when passing in the record object
   const createRecordElement = function(record) {
     if (record.ready) {
+    const startTime = new Date(Date.parse(record.start_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
+    const endTime = new Date(Date.parse(record.end_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
     return $record = $(`
      <div>
        <div>${record.id}</div>
+       <div>${startTime}</div>
+       <div>${endTime}</div>
         <div>Finished</div>
      </div>
     `);
     } else {
+      const startTime = new Date(Date.parse(record.start_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
+      const endTime = 'unknown';
       return $record = $(`
       <div>
         <div>${record.id}</div>
-         <div>Pending</div>
+        <div>${startTime}</div>
+        <div>${endTime}</div>
+        <div>Pending</div>
       </div>
      `);
     }

@@ -17,7 +17,7 @@ const getFoods = (id) => {
 const confirmOrder = () => {
   return db.query(`
     UPDATE orders
-    SET confirm = TRUE, start_time = NOW()
+    SET confirm = TRUE, start_time = NOW()- interval '7 hour'
     WHERE confirm = FALSE
   `);
 };
@@ -36,8 +36,17 @@ const deleteFood = (id) => {
   `, [id]);
 };
 
+const getOrderNotification = () => {
+  return db.query(`
+    SELECT orders.id, start_time
+    FROM orders
+    WHERE confirm = TRUE AND ready = FALSE
+  `)
+    .then(data => {
+      return data.rows[0];
+    });
+};
 
 
 
-
-module.exports = { getFoods, confirmOrder, deleteFood, editQuantity };
+module.exports = { getFoods, confirmOrder, deleteFood, editQuantity, getOrderNotification };
