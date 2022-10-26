@@ -67,7 +67,7 @@ app.get('/login/:id', (req, res) => {
   // using encrypted cookies
   req.session.user_id = req.params.id;
     // send the user somewhere
-    res.redirect('/foods');
+    res.redirect('/');
   });
 
 app.listen(PORT, () => {

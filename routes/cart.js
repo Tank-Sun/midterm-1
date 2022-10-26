@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const foodQueries = require('../db/queries/cart');
+const Twilio = require('./Twilio');
 
 
 // show all the choosen foods
@@ -34,6 +35,9 @@ router.post('/:id/delete', (req, res) => {
 // confirm the order
 router.post('/', (req, res) => {
   foodQueries.confirmOrder()
+    .then(() => {
+      Twilio.sendMessage()
+    })
     .then(() => {
       res.redirect('/');
     })
