@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS clients CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS restaurants CASCADE;
 DROP TABLE IF EXISTS menuitems CASCADE;
-DROP TABLE IF EXISTS order_detais CASCADE;
+DROP TABLE IF EXISTS order_details CASCADE;
 
 
 CREATE TABLE clients (
@@ -40,10 +40,9 @@ CREATE TABLE menuitems (
   vegetarian BOOLEAN NOT NULL
 );
 
-CREATE TABLE order_detais (
+CREATE TABLE order_details (
   id SERIAL PRIMARY KEY NOT NULL,
   menuitem_id INTEGER REFERENCES menuitems(id) ON DELETE CASCADE,
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  quantity INTEGER  NOT NULL,
-  price INTEGER  NOT NULL
+  quantity INTEGER  NOT NULL
 );

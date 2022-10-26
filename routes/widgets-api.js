@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
   db.query(`SELECT orders.id, clients.name, start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture
   FROM orders
   JOIN clients ON clients.id = client_id
-  JOIN order_detais ON order_id = orders.id
+  JOIN order_details ON order_id = orders.id
   JOIN menuitems ON menuitem_id = menuitems.id
   WHERE orders.id = $1
   ORDER BY menuitem_id;`,[req.params.id])
@@ -91,7 +91,7 @@ router.post('/:id', (req, res) => {
 router.post('/:id/delete', (req, res) => {
   return db.query(`
   UPDATE orders
-SET ready = TRUE,end_time = now()
+SET ready = TRUE,end_time = now()- interval '7 hour'
   WHERE orders.id = $1
   RETURNING *;`,[req.params.id])
     .then((data) => {
