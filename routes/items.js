@@ -1,22 +1,25 @@
 const express = require('express');
-
+const productQueries = require('../db/items');
 const router = express.Router();
 
-// Get food route
-module.exports = (db) => {
-  router.get("/", (request, response) => {
-    const queryConfig = {
-      text: `
-      SELECT * FROM menuitems;
-      `,
-      values: []
-    }
+// Get items route
+router.get('/:restaurantId/items', (req, res) => {
+  productQueries.getItemsByRestaurantID()
+    .then((items) => {
+      // res.render()
+      // res.redirect()
+      res.json(items);
+    });
+});
 
-    db.query(queryConfig)
-      .then((queryResponse) => {
-        response.json(queryResponse.rows);
-      })
-  });
-  return router;
-};
+// GET food routes => /items/:id
+// router.get('/:restaurantId/items', (req, res) => {
+//   productQueries.getItemsById(req.params.id)
+//     .then((items) => {
+//       res.json(items);
+//     });
+// });
+
+
+module.exports = router;
 
