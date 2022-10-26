@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Users</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <a>FAANG Restaurant</a>
+    <a>Logout</a>
+  </header>
+
+  <div id="imgRestaurant" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center pl-5 my-0">
+    <h1>CurrentOrders</h1>
+  </div>
+
+  <% include partials/_restaurantButtons %>
+
+  <main style="margin: 1em;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Order List</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let id in urls) { %>
+          <tr>
+            <td><%= urls[id].id%></td>
+              <td><%= urls[id].name %></td>
+              <td><%= urls[id].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+              <td><%= urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+            <td><form method="GET" action='/api/widgets/<%= urls[id].id%>'>
+              <button type="submit" class="btn btn-primary">Edit</button>
+              </form></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </main>
+
+</body>
+
+</html>

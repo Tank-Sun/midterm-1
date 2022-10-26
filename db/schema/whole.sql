@@ -17,8 +17,8 @@ CREATE TABLE clients (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
-  start_time TIMESTAMP NOT NULL,
-  end_time TIMESTAMP NOT NULL,
+  start_time TIMESTAMP,
+  end_time TIMESTAMP,
   ready BOOLEAN NOT NULL,
   confirm BOOLEAN NOT NULL
 );

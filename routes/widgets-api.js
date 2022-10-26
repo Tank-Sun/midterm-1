@@ -22,14 +22,18 @@ router.use((req, res, next) => {
 //owner
 //GET restaurants orders/
 router.get('/', (req, res) => {
-  const query = `SELECT orders.id, clients.name, start_time, end_time, ready
+  const query = `SELECT orders.id, clients.name, start_time, end_time, confirm, ready
   FROM orders
-  JOIN clients ON clients.id = client_id;`;
+  JOIN clients ON clients.id = client_id
+  ORDER BY start_time DESC
+  ;`;
   console.log(query);
   db.query(query)
     .then(data => {
       const widgets = data.rows;
-      res.json(widgets );
+      const templateVars = {urls:widgets};
+      //res.json(widgets );
+      res.render("restaurantOrders", templateVars);
     })
     .catch(err => {
       res
@@ -40,15 +44,15 @@ router.get('/', (req, res) => {
 
 // GET /restaurants  orders/:id/
 router.get('/:id', (req, res) => {
-  const query = `SELECT orders.id, clients.name, start_time, end_time, ready
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, confirm,ready
   FROM orders
   JOIN clients ON clients.id = client_id
-  WHERE orders.id = $1;`;
-  console.log(query);
-  db.query(query,[req.params.id])
+  WHERE orders.id = $1;`,[req.params.id])
     .then(data => {
       const widgets = data.rows[0];
-      res.json(widgets );
+      const templateVars = { order: widgets};
+      //res.json(widgets );
+      res.render("restaurantOrderDetails", templateVars);
     })
     .catch(err => {
       res
@@ -59,13 +63,32 @@ router.get('/:id', (req, res) => {
 
 //take the order, start cooking
 //Edit  POST /orders/:id
-
+router.post('/:id', (req, res) => {
+  return db.query(`UPDATE orders
+  SET end_time = start_time + $1
+  WHERE orders.id = $2
+  RETURNING *;`,[req.body.fulfillTime*60, req.params.id])
+    .then((result) => {
+      console.log(result.rows[0]);
+      const widgets = result.rows[0];
+      const templateVars = { order: widgets};
+      //res.json(widgets );
+      res.render("restaurantOrderDetails", templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+});
 
 
 
 
 //finish the order
 //Delete  POST/orders/:id/delete
+
+
 
 
 ////login
