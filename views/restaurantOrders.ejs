@@ -10,29 +10,31 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/restnav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/restlayout.css" type="text/css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <header>
-    <a>FAANG Restaurant</a>
-    <a>Logout</a>
-  </header>
+  <nav>
+    <span class ="titleleft">FAANG Restaurant</span>
+    <div class ="titleright"><div>Logout</div>
+    <i class="fa-solid fa-angles-down"></i>
+    </div>
+  </nav>
 
-  <div id="imgRestaurant" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center pl-5 my-0">
-    <h1>CurrentOrders</h1>
+
+  <main style="margin-top: 10em;">
+ <div id="imgRestaurant" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center pl-5 my-0">
+    <h2>CurrentOrders</h2>
   </div>
 
-
-  <main style="margin: 1em;">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Order id</th>
+          <th scope="col">Order List</th>
           <th scope="col">Name</th>
           <th scope="col">Start time</th>
           <th scope="col">Finish time</th>
@@ -43,10 +45,11 @@
       <tbody>
         <% for (let id in urls) { %>
           <tr>
-            <td><%= urls[id].id%></td>
+            <td><%=Number(id)+Number(1)%></td>
               <td><%= urls[id].name %></td>
               <td><%= urls[id].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
-              <td><%= urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+
+              <td><%=urls[id].end_time?urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }):"" %></td>
               <td><%= urls[id].ready %></td>
             <td><form method="GET" action='/api/widgets/<%= urls[id].id%>'>
               <button type="submit" class="btn btn-primary">Edit</button>

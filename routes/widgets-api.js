@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
   const query = `SELECT orders.id, clients.name, start_time, end_time, confirm, ready
   FROM orders
   JOIN clients ON clients.id = client_id
-  ORDER BY start_time DESC
+  WHERE confirm = TRUE AND start_time > '2022-10-28T00:00:00.000Z'
+  ORDER BY ready, start_time DESC
   ;`;
   console.log(query);
   db.query(query)
@@ -44,7 +45,7 @@ router.get('/', (req, res) => {
 
 // GET /restaurants  orders/:id/
 router.get('/:id', (req, res) => {
-  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture
+  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture, menuitems.vegetarian, quantity
   FROM orders
   JOIN clients ON clients.id = client_id
   JOIN order_details ON order_id = orders.id
