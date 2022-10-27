@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
-const Twilio = require('../twilioning');
+const Twilio = require('./Twilio');
 
 
 router.use((req, res, next) => {
@@ -75,9 +75,11 @@ router.post('/:id', (req, res) => {
   WHERE orders.id = $2
   RETURNING *;`,[req.body.fulfillTime*60, req.params.id])
     .then(() => {
-      Twilio.sendMessageToClient();
+      const time = req.body.fulfillTime;
+      console.log("time:", time);
+      Twilio.sendTimeToClient(time);
     })
-    .then((data) => {
+    .then(() => {
       // console.log(data.rows);
       res.redirect(`/api/widgets`);
     })
@@ -104,7 +106,18 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
       res.redirect(`/api/widgets`);
     })
     .then(() => {
-      Twilio.sendMessageToClientSecondTime();
+      return db.query(`
+        SELECT location
+        FROM restaurants
+        WHERE id = 1
+      `)
+    })
+    .then(location => {
+      return location.rows[0];
+    })
+    .then((location) => {
+      const address = location.location;
+      Twilio.sendMessageToClient(address);
     })
     .catch(err => {
       res
