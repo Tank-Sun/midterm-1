@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
       Twilio.sendMessageToOwner(id, time);
     })
     .then(() => {
-      res.redirect('/');
+      res.redirect('/restaurant');
     })
     .catch(err => {
       console.log(err.message);
