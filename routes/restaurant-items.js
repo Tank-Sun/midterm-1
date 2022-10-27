@@ -44,7 +44,6 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   db.query(`SELECT *
   FROM menuitems
-  JOIN order_details ON menuitem_id = menuitems.id
   WHERE menuitems.id = $1;`,[req.params.id])
     .then(data => {
       const items = data.rows[0];
