@@ -43,7 +43,7 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 
 ## Dependencies
 
-- Node 10.x or above
+- node 10.x or above
 - NPM 5.x or above
 - PG 6.x
 - cookie-session
@@ -51,6 +51,5 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 - express
 - jquery
 - morgan
-- pg
 - sass
 - twilio
