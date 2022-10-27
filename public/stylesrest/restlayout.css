@@ -48,6 +48,7 @@ tr:hover {
 
 .order{
   display: flex;
+  justify-content:flex-start;
 }
 
 
@@ -56,5 +57,11 @@ tr:hover {
   flex-direction: column;
 justify-content: space-around;
  font-size: x-large;
+ padding-left: 30px;
+}
 
+.subtime{
+  display: flex;
+  justify-content:flex-end;
+  padding-right: 25px;
 }

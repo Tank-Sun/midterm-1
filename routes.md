@@ -1,50 +1,50 @@
 # Client
 ## items:
 see all the items
-Browse  GET  /items
+: Browse  GET  /restaurant
 
 click one item, see item details
-Read    GET  /items/:id
+: Read    GET  /restaurant/:id
 
 choose quantities
-Edit POST /items/:id
+: Edit POST /restaurant/:id
 
 add to cart
-Add  POST  /items
+: Add  POST  /restaurant/:id
 
 
 ## Cart:
 show all the choosen foods
-Browse  GET  /foods
+: Browse  GET  /foods
 
 edit quantities
-Edit  POST  /foods/:id
+: Edit  POST  /foods/:id
 
 delete foods
-Delete  POST  /foods/:id/delete
+: Delete  POST  /foods/:id/delete
 
 order confirmation
-Add  POST  /foods
+: Add  POST  /foods
 
 
 ## Order History:
 show all the order history
-Browse  GET /records
+: Browse  GET /records
 
 
 # Owner
 ## orders list
 see all the orders
-Browse  GET  /orders
+: Browse  GET  /api/widgets
 
 choose one order
-Read  GET  /orders/:id
+: Read  GET  /api/widgets/:id
 
 take the order, start cooking
-Edit  POST /orders/:id
+: Edit  POST /api/widgets/:id
 
 finish the order
-Delete  POST/orders/:id/delete
+: Delete  POST/api/widgets/:id/delete
 
 
 

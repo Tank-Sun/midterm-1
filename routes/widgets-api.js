@@ -15,7 +15,7 @@ router.use((req, res, next) => {
   // if (!req.session.user_id) {
   //   return res.redirect('/login');
   // }
-  console.log('inside owner11 router');
+  console.log('inside owner router');
 
   next();
 });
@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
 
 // GET /restaurants  orders/:id/
 router.get('/:id', (req, res) => {
-  db.query(`SELECT orders.id, clients.name, start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture, menuitems.vegetarian, quantity
+  db.query(`SELECT orders.id, clients.name as client_name , start_time, end_time, ready, menuitems.name, menuitems.description, menuitems.picture, menuitems.vegetarian, quantity
   FROM orders
   JOIN clients ON clients.id = client_id
   JOIN order_details ON order_id = orders.id
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
   ORDER BY menuitem_id;`,[req.params.id])
     .then(data => {
       const widgets = data.rows;
-      // console.log(widgets);
+      console.log(widgets);
       const templateVars = { order: widgets};
       //res.json(widgets );
       res.render("restaurantOrderDetails", templateVars);
