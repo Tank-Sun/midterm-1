@@ -1,0 +1,37 @@
+nav {
+  height: 200px;
+  width: 100%;
+  background-image: url("https://thumbs.dreamstime.com/b/high-angle-panoramic-still-life-view-assortment-chinese-asian-inspired-food-dishes-wooden-table-surface-buffet-assorted-120516411.jpg");
+  color: hsl(0, 94%, 51%);
+  font-size:x-large;
+  padding: 0 1.5em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+
+}
+
+.titleleft{
+  font-family: 'Bungee', cursive;
+  font-size:xxx-large;
+  background-color:rgba(249, 247, 246, 0.4);
+}
+
+.titleright{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color:rgba(249, 247, 246, 0.4);
+}
+
+i.fa-solid.fa-angles-down{
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+

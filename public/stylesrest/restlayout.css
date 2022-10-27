@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #0b0b0b;
+  background-color: #f4f1ec;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  display: flex;
+  /*flex-direction: column;*/
+  justify-content: center;
+}
+table{
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align:center;
+
+}
+.container {
+  margin: 0 5%;
+   margin-top: 120px;
+}
+
+table,
+th,
+td {
+    border-bottom: 3px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    padding:0.5rem 0.75rem;
+}
+
+th {
+    background: green;
+    color:azure;
+}
+
+tr:hover {
+    background: gray;
+    color:white;
+}
+
+.order{
+  display: flex;
+}
+
+
+.biaoge{
+  display: flex;
+  flex-direction: column;
+justify-content: space-around;
+ font-size: x-large;
+
+}
