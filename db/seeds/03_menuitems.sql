@@ -9,6 +9,3 @@ VALUES
 (1, 'Chinese Hamburger', 'Rou Jia Mo', 10, 'https://publish.purewow.net/wp-content/uploads/sites/2/2020/02/traditional-chinese-food-chinese-hamburger.jpg?fit=728%2C921',FALSE),
 (1, 'Spring Rolls', 'Chun Juan', 10, 'https://publish.purewow.net/wp-content/uploads/sites/2/2021/12/traditional-chinese-food-spring-rolls.jpg?fit=728%2C921',TRUE),
 (1, 'HOT POT', 'Huo Guo', 60, 'https://i.cbc.ca/1.3798472.1534527779!/fileImage/httpImage/image.JPG_gen/derivatives/original_780/hot-pot.JPG',FALSE);
-
-
-
