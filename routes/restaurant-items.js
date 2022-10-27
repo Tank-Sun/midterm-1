@@ -90,39 +90,4 @@ router.post('/:id', (req, res) => {
 });
 
 
-
-
-// //finish the order
-// //Delete  POST/orders/:id/delete
-// router.post('/:id/delete', (req, res) => {
-//   return db.query(`
-//   UPDATE orders
-// SET ready = TRUE,end_time = now()
-//   WHERE orders.id = $1
-//   RETURNING *;`,[req.params.id])
-//     .then((data) => {
-//       console.log(data.rows);
-//       res.redirect(`/api/widgets`);
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     })
-// });
-
-
-
-////login
-//app.get('/login/:id', (req, res) => {
-//  // using encrypted cookies
-//  req.session.user_id = req.params.id;
-
-//  // or using plain-text cookies
-//  res.cookie('user_id', req.params.id);
-
-//  // send the user somewhere
-//  res.redirect('/');
-//});
-
 module.exports = router;

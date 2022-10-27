@@ -26,11 +26,11 @@ router.get('/', (req, res) => {
   const query = `SELECT orders.id, clients.name, start_time, end_time, confirm, ready
   FROM orders
   JOIN clients ON clients.id = client_id
-  WHERE confirm = TRUE AND ready = FALSE
+  WHERE confirm = TRUE AND start_time > '2022-10-27T00:00:00.000Z'
   ORDER BY ready, start_time DESC
   ;`;
   // console.log(query);
-  // start_time > '2022-10-28T00:00:00.000Z'
+  //
   db.query(query)
     .then(data => {
       const widgets = data.rows;
@@ -127,18 +127,5 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
     })
 });
 
-
-
-////login
-//app.get('/login/:id', (req, res) => {
-//  // using encrypted cookies
-//  req.session.user_id = req.params.id;
-
-//  // or using plain-text cookies
-//  res.cookie('user_id', req.params.id);
-
-//  // send the user somewhere
-//  res.redirect('/');
-//});
 
 module.exports = router;
