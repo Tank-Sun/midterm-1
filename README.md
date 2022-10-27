@@ -36,6 +36,7 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 
 ## ERD
 
+!["ERD"]()
 
 ## Screenshots
 

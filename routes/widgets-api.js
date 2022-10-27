@@ -10,13 +10,11 @@ const router  = express.Router();
 const db = require('../db/connection');
 const Twilio = require('./Twilio');
 
-
 router.use((req, res, next) => {
   // if (!req.session.user_id) {
   //   return res.redirect('/login');
   // }
   console.log('inside owner router');
-
   next();
 });
 
@@ -29,13 +27,11 @@ router.get('/', (req, res) => {
   WHERE confirm = TRUE AND start_time > '2022-10-27T00:00:00.000Z'
   ORDER BY ready, start_time DESC
   ;`;
-  // console.log(query);
-  //
+
   db.query(query)
     .then(data => {
       const widgets = data.rows;
       const templateVars = {urls:widgets};
-      //res.json(widgets );
       res.render("restaurantOrders", templateVars);
     })
     .catch(err => {
@@ -56,9 +52,7 @@ router.get('/:id', (req, res) => {
   ORDER BY menuitem_id;`,[req.params.id])
     .then(data => {
       const widgets = data.rows;
-      console.log(widgets);
       const templateVars = { order: widgets};
-      //res.json(widgets );
       res.render("restaurantOrderDetails", templateVars);
     })
     .catch(err => {
@@ -91,9 +85,6 @@ router.post('/:id', (req, res) => {
     })
 });
 
-
-
-
 //finish the order
 //Delete  POST/orders/:id/delete
 router.post('/:id/delete', (req, res) => {
@@ -103,7 +94,6 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
   WHERE orders.id = $1
   RETURNING *;`,[req.params.id])
     .then((data) => {
-      // console.log(data.rows);
       res.redirect(`/api/widgets`);
     })
     .then(() => {

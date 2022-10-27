@@ -48,7 +48,6 @@
             <td><%=Number(id)+Number(1)%></td>
               <td><%= urls[id].name %></td>
               <td><%= urls[id].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
-
               <td><%=urls[id].end_time?urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }):"" %></td>
               <td style="color: hsl(0, 100%, 50%);"><%= urls[id].ready %></td>
             <td><form method="GET" action='/api/widgets/<%= urls[id].id%>'>

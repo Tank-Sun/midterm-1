@@ -11,7 +11,6 @@ nav {
   align-items: center;
   position: fixed;
   top: 0px;
-
 }
 
 .titleleft{
@@ -22,8 +21,9 @@ nav {
 
 .titleright{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content:space-between;
+  align-items: flex-end;
+  padding-left: 10px;
   font-family: 'Source Sans Pro', sans-serif;
   background-color:rgba(249, 247, 246, 0.4);
 }

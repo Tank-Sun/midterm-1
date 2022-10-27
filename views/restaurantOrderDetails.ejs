@@ -21,6 +21,7 @@
   <nav>
     <span class ="titleleft">FAANG Restaurant</span>
     <div class ="titleright"><div>Logout</div>
+    <a class="titleright nav-item nav-link" href="/api/widgets">Home</a>
     <i class="fa-solid fa-angles-down"></i>
     </div>
   </nav>
@@ -48,9 +49,9 @@
           </tr>
     </table>
 
-            <form class="form-inline subtime" action="/api/widgets/<%= order[0].id%>" method="POST">
-                <div class="form-group mb-2 text-center m-auto">
-                  <label>Change fulfill time: (min)</label>
+           <form class="form-inline subtime" action="/api/widgets/<%= order[0].id%>" method="POST">
+             <div class="form-group mb-2 text-center m-auto">
+               <label>Change fulfill time: (min)</label>
                   <input
                     class="form-control"
                     type="text"
@@ -58,23 +59,21 @@
                     placeholder="time"
                     style="width: 300px; margin: 1em"
                   />
-                  <button type="submit" class="btn btn-primary">Submit time</button>
-                </div>
-                </form>
-
+                <button type="submit" class="btn btn-primary">Submit time</button>
+              </div>
+            </form>
 
     <% for (let id in order) { %>
      <div class="order">
          <td> <img width ='300' height = '200'src="<%= order[id].picture %>"></td>
          <div class="biaoge">
-          <div>name:<%= order[id].name%></div>
-          <div >description:<%= order[id].description%></div>
-          <div >quantity:<%= order[id].quantity%></div>
+          <div>name:<span style="color: red;"><%= order[id].name%></span></div>
+          <div >description:<span style="color: red;"><%= order[id].description%></span></div>
+          <div >quantity:<span style="color: red;"><%= order[id].quantity%></span></div>
          </div>
     </div>
-         <br> <% } %>
+    <br> <% } %>
   </main>
 
 </body>
-
 </html>

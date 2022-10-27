@@ -12,7 +12,6 @@ choose quantities
 add to cart
 : Add  POST  /restaurant/:id
 
-
 ## Cart:
 show all the choosen foods
 : Browse  GET  /foods
@@ -25,7 +24,6 @@ delete foods
 
 order confirmation
 : Add  POST  /foods
-
 
 ## Order History:
 show all the order history
