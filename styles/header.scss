@@ -1,0 +1,51 @@
+header {
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  #header {
+    height: 200px;
+    background-image: url("https://thumbs.dreamstime.com/b/high-angle-panoramic-still-life-view-assortment-chinese-asian-inspired-food-dishes-wooden-table-surface-buffet-assorted-120516411.jpg");
+    padding: 0 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #restaurant_name {
+      background-color: rgba(249, 247, 246, 0.4);
+      color: hsl(0, 94%, 51%);
+      font-size:60px;
+    }
+    #logout {
+      margin-top: 8px;
+      background-color: rgba(249, 247, 246, 0.4);
+      color: hsl(0, 0%, 0%);
+      font-size:30px;
+      align-self: flex-start;
+    }
+  }
+
+  #nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 25px;
+
+    .nav {
+      padding: 10px;
+      border-style: solid;
+      border-width: 2px;
+      background-color: #f7f7f2;
+    }
+    .nav:hover {
+      box-shadow: 2.5px 2.5px 2.5px 2.5px #abbcc4;
+    }
+  }
+}

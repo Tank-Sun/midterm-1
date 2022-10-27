@@ -4,8 +4,9 @@ $(document).ready(function() {
 
     const $food = $(`
       <div>
-        <div>food.id: ${food.id}</div>
+        <div>Menu No.: ${food.menuitem_id}</div>
         <div>food name: ${food.name}</div>
+        <div>food name: <img src="${food.picture}"></div>
         <div>quantity: ${food.quantity}</div>
         <form action="/foods/${food.id}?_method=PATCH" method="POST">
           <div>
@@ -44,7 +45,7 @@ $(document).ready(function() {
       if (foods.length) {
         renderFoods(foods);
       } else {
-        $('#cart').replaceWith('<p>Your cart is empty.</p>');
+        $('#cart').replaceWith('<section id="cart"><p>Your cart is empty now. Go to the <a href="/restaurant">main menu</a> to have a look!</p></section>');
       }
     })
     .catch((error) => {
