@@ -1,6 +1,6 @@
 const twilio = require('twilio');
 const accountSid = 'ACe4735793404acb37b694294e32b1cefc'; // Your Account SID from www.twilio.com/console
-const authToken = 'your_auth_token'; // Your Auth Token from www.twilio.com/console
+const authToken = 'daeefeab81e45b579e04e43f9ac67dd7'; // Your Auth Token from www.twilio.com/console
 
 
 const client = new twilio(accountSid, authToken);
