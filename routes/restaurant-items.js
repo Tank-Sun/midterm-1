@@ -13,7 +13,7 @@ const orderQueries = require('../db/queries/restaurantItems');
 
 router.use((req, res, next) => {
 
-  console.log('inside owner11 router');
+  console.log('inside client router');
 
   next();
 });
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   db.query(query)
     .then(data => {
       const items = data.rows;
-      // console.log(items);
+      console.log(items);
       const templateVars = {urls:items};
       // res.json(items);
       res.render("restaurant-items", templateVars);
@@ -44,13 +44,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   db.query(`SELECT *
   FROM menuitems
-  JOIN order_details ON menuitem_id = menuitems.id
-  JOIN orders ON orders.id = order_id
   WHERE menuitems.id = $1;`,[req.params.id])
     .then(data => {
       const items = data.rows[0];
-      // console.log(items);
+      console.log(items);
       const templateVars = { items: items};
+      console.log('templateVars',templateVars);
       // res.json(items);
       res.render("items", templateVars);
     })
