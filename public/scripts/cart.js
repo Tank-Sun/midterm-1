@@ -7,7 +7,7 @@ $(document).ready(function() {
         <div>food.id: ${food.id}</div>
         <div>food name: ${food.name}</div>
         <div>quantity: ${food.quantity}</div>
-        <form action="/foods/${food.id}" method="POST">
+        <form action="/foods/${food.id}?_method=PATCH" method="POST">
           <div>
             <label for="newQuantity">new quantity:</label>
             <input
@@ -18,7 +18,7 @@ $(document).ready(function() {
           </div>
         </form>
         <div>price: ${food.total_price}</div>
-        <form method="POST" action="/foods/${food.id}/delete">
+        <form method="POST" action="/foods/${food.id}/delete?_method=DELETE">
           <button type="submit">Delete</button>
         </form>
       </div>

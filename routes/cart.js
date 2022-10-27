@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 // edit the quantity
-router.post('/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   const newQuantity = req.body.newQuantity;
   foodQueries.editQuantity(req.params.id, newQuantity)
     .then(() => {
@@ -22,7 +22,7 @@ router.post('/:id', (req, res) => {
 });
 
 // delete one kinds of food
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   foodQueries.deleteFood(req.params.id)
     .then(() => {
       res.redirect('/foods');
