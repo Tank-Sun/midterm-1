@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
-const Twilio = require('../twilioning');
+const Twilio = require('./Twilio');
 
 
 router.use((req, res, next) => {
@@ -26,10 +26,11 @@ router.get('/', (req, res) => {
   const query = `SELECT orders.id, clients.name, start_time, end_time, confirm, ready
   FROM orders
   JOIN clients ON clients.id = client_id
-  WHERE confirm = TRUE AND start_time > '2022-10-28T00:00:00.000Z'
+  WHERE confirm = TRUE AND start_time > '2022-10-27T00:00:00.000Z'
   ORDER BY ready, start_time DESC
   ;`;
-  console.log(query);
+  // console.log(query);
+  //
   db.query(query)
     .then(data => {
       const widgets = data.rows;
@@ -55,7 +56,7 @@ router.get('/:id', (req, res) => {
   ORDER BY menuitem_id;`,[req.params.id])
     .then(data => {
       const widgets = data.rows;
-      console.log(widgets);
+      // console.log(widgets);
       const templateVars = { order: widgets};
       //res.json(widgets );
       res.render("restaurantOrderDetails", templateVars);
@@ -75,9 +76,11 @@ router.post('/:id', (req, res) => {
   WHERE orders.id = $2
   RETURNING *;`,[req.body.fulfillTime*60, req.params.id])
     .then(() => {
-      Twilio.sendMessageToClient();
+      const time = req.body.fulfillTime;
+      // console.log("time:", time);
+      Twilio.sendTimeToClient(time);
     })
-    .then((data) => {
+    .then(() => {
       // console.log(data.rows);
       res.redirect(`/api/widgets`);
     })
@@ -100,11 +103,22 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
   WHERE orders.id = $1
   RETURNING *;`,[req.params.id])
     .then((data) => {
-      console.log(data.rows);
+      // console.log(data.rows);
       res.redirect(`/api/widgets`);
     })
     .then(() => {
-      Twilio.sendMessageToClientSecondTime();
+      return db.query(`
+        SELECT location
+        FROM restaurants
+        WHERE id = 1
+      `)
+    })
+    .then(location => {
+      return location.rows[0];
+    })
+    .then((location) => {
+      const address = location.location;
+      Twilio.sendMessageToClient(address);
     })
     .catch(err => {
       res
@@ -113,18 +127,5 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
     })
 });
 
-
-
-////login
-//app.get('/login/:id', (req, res) => {
-//  // using encrypted cookies
-//  req.session.user_id = req.params.id;
-
-//  // or using plain-text cookies
-//  res.cookie('user_id', req.params.id);
-
-//  // send the user somewhere
-//  res.redirect('/');
-//});
 
 module.exports = router;
