@@ -24,25 +24,25 @@ router.get('/', (req, res) => {
     });
 });
 
-// client main page
-router.get('/main', (req, res) => {
-  database.getAllRestaurants(req.query, 20)
-  .then(restaurants => res.send({restaurants}))
-  .catch(e => {
-    console.error(e);
-    res.send(e)
-  });
-});
+// // client main page
+// router.get('/main', (req, res) => {
+//   database.getAllRestaurants(req.query, 20)
+//   .then(restaurants => res.send({restaurants}))
+//   .catch(e => {
+//     console.error(e);
+//     res.send(e)
+//   });
+// });
 
-// items page
-router.get('/menuitems', (req, res) => {
-  database.getFood(req.query, 20)
-  .then(food => res.send({food}))
-  .catch(e => {
-    console.error(e);
-    res.send(e)
-  });
-});
+// // items page
+// router.get('/menuitems', (req, res) => {
+//   database.getFood(req.query, 20)
+//   .then(food => res.send({food}))
+//   .catch(e => {
+//     console.error(e);
+//     res.send(e)
+//   });
+// });
 
 }
 

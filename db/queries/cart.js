@@ -41,6 +41,8 @@ const getOrderNotification = () => {
     SELECT orders.id, start_time
     FROM orders
     WHERE confirm = TRUE AND ready = FALSE
+    ORDER BY id DESC
+    LIMIT 1
   `)
     .then(data => {
       return data.rows[0];

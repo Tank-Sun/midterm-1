@@ -26,10 +26,11 @@ router.get('/', (req, res) => {
   const query = `SELECT orders.id, clients.name, start_time, end_time, confirm, ready
   FROM orders
   JOIN clients ON clients.id = client_id
-  WHERE confirm = TRUE AND start_time > '2022-10-28T00:00:00.000Z'
+  WHERE confirm = TRUE AND ready = FALSE
   ORDER BY ready, start_time DESC
   ;`;
-  console.log(query);
+  // console.log(query);
+  // start_time > '2022-10-28T00:00:00.000Z'
   db.query(query)
     .then(data => {
       const widgets = data.rows;
@@ -55,7 +56,7 @@ router.get('/:id', (req, res) => {
   ORDER BY menuitem_id;`,[req.params.id])
     .then(data => {
       const widgets = data.rows;
-      console.log(widgets);
+      // console.log(widgets);
       const templateVars = { order: widgets};
       //res.json(widgets );
       res.render("restaurantOrderDetails", templateVars);
@@ -76,7 +77,7 @@ router.post('/:id', (req, res) => {
   RETURNING *;`,[req.body.fulfillTime*60, req.params.id])
     .then(() => {
       const time = req.body.fulfillTime;
-      console.log("time:", time);
+      // console.log("time:", time);
       Twilio.sendTimeToClient(time);
     })
     .then(() => {
@@ -102,7 +103,7 @@ SET ready = TRUE,end_time = now()- interval '7 hour'
   WHERE orders.id = $1
   RETURNING *;`,[req.params.id])
     .then((data) => {
-      console.log(data.rows);
+      // console.log(data.rows);
       res.redirect(`/api/widgets`);
     })
     .then(() => {
