@@ -63,10 +63,12 @@ router.get('/:id', (req, res) => {
 //Select item, add to cart
 //Edit  POST /:id
 router.post('/:id', (req, res) => {
-  return db.query(`UPDATE order_details
-  SET quantity = $1
-  WHERE menuitem_id = $2 AND order_id = 7
-  RETURNING *;`,[req.body.Quantity, req.params.id])
+  return db.query(`
+  INSERT INTO order_details (order_id, menuitem_id, quantity)
+  VALUES ((SELECT orders.id
+  FROM orders
+  JOIN clients ON client_id = clients.id
+  WHERE clients.id = 1 AND confirm = FALSE), $2, $1);`,[req.body.Quantity, req.params.id])
     .then((data) => {
       console.log(data.rows);
       res.redirect(`/restaurant`);
