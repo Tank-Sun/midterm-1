@@ -10,5 +10,8 @@ const router  = express.Router();
 const db = require('../db/connection');
 
 
+router.get('/', (req, res) => {
+  res.render('users');
+});
 
 module.exports = router;
