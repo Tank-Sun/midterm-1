@@ -34,7 +34,7 @@
        <div class="card" style="width: 18rem;">
         <img width="480" height="320" src="<%= items.picture %>">
         <div class="card-body">
-          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST"></form>
+          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST">
           <h5 class="card-title"><%= items.name %></h5>
           <p class="card-text"><%= items.description %></p>
           <label>Quantity:</label>
@@ -46,6 +46,7 @@
                     style="width: 300px; margin: 1em"
                   />
                   <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
         </div>
       </div>
      <!-- </div>
