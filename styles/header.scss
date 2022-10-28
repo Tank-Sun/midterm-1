@@ -17,17 +17,46 @@ header {
     justify-content: space-between;
     align-items: center;
 
+    #restaurant {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #address {
+      font-size: 22px;
+      margin-bottom: 20px;
+      background-color: rgba(249, 247, 246, 0.4);
+    }
+
     #restaurant_name {
       background-color: rgba(249, 247, 246, 0.4);
-      color: hsl(0, 94%, 51%);
+      color: #4a1313;
       font-size:60px;
     }
-    #logout {
+
+    #client {
       margin-top: 8px;
-      background-color: rgba(249, 247, 246, 0.4);
-      color: hsl(0, 0%, 0%);
-      font-size:30px;
       align-self: flex-start;
+      display: flex;
+      align-items: center;
+    }
+
+    #client_name {
+      margin-right: 15px;
+      color: black;
+      font-size:20px;
+      padding: 5px;
+      font-family: 'Pacifico', cursive;
+    }
+
+    #logout {
+      background-color: rgb(255 255 255 / 52%);
+      color: #53534a;
+      font-size:20px;
+      border-color: white;
+      padding: 5px;
+      border-style: solid;
+      font-family: 'Poppins', sans-serif;
     }
   }
 
@@ -37,6 +66,8 @@ header {
     align-items: center;
     margin-top: 20px;
     font-size: 25px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
 
     .nav {
       padding: 10px;
