@@ -35,9 +35,9 @@
       <thead>
         <tr>
           <th scope="col">Order List</th>
-          <th scope="col">Name</th>
-          <th scope="col">Start time</th>
-          <th scope="col">Finish time</th>
+          <th scope="col">Client Name</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">Finish Time</th>
           <th scope="col">Ready</th>
           <th scope="col">Edit</th>
         </tr>
@@ -48,9 +48,8 @@
             <td><%=Number(id)+Number(1)%></td>
               <td><%= urls[id].name %></td>
               <td><%= urls[id].start_time.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
-
               <td><%=urls[id].end_time?urls[id].end_time.toLocaleString('en-GB', { timeZone: 'UTC' }):"" %></td>
-              <td><%= urls[id].ready %></td>
+              <td style="color: hsl(0, 100%, 50%);"><%= urls[id].ready %></td>
             <td><form method="GET" action='/api/widgets/<%= urls[id].id%>'>
               <button type="submit" class="btn btn-primary">Edit</button>
               </form></td>

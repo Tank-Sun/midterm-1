@@ -48,13 +48,30 @@ tr:hover {
 
 .order{
   display: flex;
+  justify-content:flex-start;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-
 
 .biaoge{
   display: flex;
   flex-direction: column;
 justify-content: space-around;
  font-size: x-large;
+ padding-left: 30px;
+}
 
+.subtime{
+  display: flex;
+  justify-content:flex-end;
+  padding-right: 25px;
+}
+
+.btn-primary {
+  cursor: pointer;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: hsl(0, 100%, 50%);
 }
