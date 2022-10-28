@@ -31,19 +31,18 @@
 
        <div class="card" style="width: 18rem;">
         <img width="480" height="320" src="<%= items.picture %>">
-        <div class="card-body">
-          <h5 class="card-title"><%= items.name %></h5>
-          <p class="card-text"><%= items.description %></p>
-          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST"></form>
+        <div width="480" class="card-body">
+          <h5 width="480"class="card-title"><%= items.name %></h5>
+          <p width="480"class="card-text"><%= items.description %></p>
           <label>Quantity:</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="Quantity"
+          <input
+            class="form-control"
+            type="text"
+            name="Quantity"
 
-                    style="width: 300px; margin: 1em"
-                  />
-                  <button type="submit" class="btn btn-primary">Add to Cart</button>
+            style="width: 300px; margin: 1em"
+          />
+          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST"><button type="submit" class="btn btn-primary">Add to Cart</button></form>
         </div>
       </div>
      <!-- </div>
