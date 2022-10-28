@@ -34,6 +34,7 @@
         <div width="480" class="card-body">
           <h5 width="480"class="card-title"><%= items.name %></h5>
           <p width="480"class="card-text"><%= items.description %></p>
+          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST">
           <label>Quantity:</label>
           <input
             class="form-control"
@@ -42,7 +43,7 @@
 
             style="width: 300px; margin: 1em"
           />
-          <form class="form-inline" action="/restaurant/<%= items.id%>" method="POST"><button type="submit" class="btn btn-primary">Add to Cart</button></form>
+         <button type="submit" class="btn btn-primary">Add to Cart</button></form>
         </div>
       </div>
      <!-- </div>
