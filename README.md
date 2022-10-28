@@ -39,6 +39,7 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 !["ERD"](https://github.com/Tank-Sun/midterm-1-Food-Pick-up-Ordering/blob/restaurant/docs/ERD.drawio.png?raw=true)
 
 ## Screenshots
+Screenshot of Ownerpage
 !["Ownerpage_Screenshot"](https://github.com/Tank-Sun/midterm-1-Food-Pick-up-Ordering/blob/restaurant/docs/Restaurant%20Screen%20Shot.png?raw=true)
 
 ## Dependencies
