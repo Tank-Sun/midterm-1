@@ -5,29 +5,45 @@ $(document).ready(function() {
     const startTime = new Date(Date.parse(record.start_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
     const endTime = new Date(Date.parse(record.end_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
     return $record = $(`
-     <div>
-       <div>${record.id}</div>
-       <div>${startTime}</div>
-       <div>${endTime}</div>
-        <div>Finished</div>
-     </div>
+      <tbody>
+        <tr>
+          <td>${record.id}</td>
+          <td>${startTime}</td>
+          <td>${endTime}</td>
+          <td>Finished</td>
+        </tr>
+      </tbody>
     `);
     } else {
       const startTime = new Date(Date.parse(record.start_time)).toLocaleString('en-GB', { timeZone: 'UTC' });
-      const endTime = 'unknown';
+      const endTime = '';
       return $record = $(`
-      <div>
-        <div>${record.id}</div>
-        <div>${startTime}</div>
-        <div>${endTime}</div>
-        <div>Pending</div>
-      </div>
+        <tbody>
+          <tr>
+            <td>${record.id}</td>
+            <td>${startTime}</td>
+            <td>${endTime}</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
      `);
     }
  };
 
  // Loop through the records data, turn them into HTML and add them in chronological order
  const renderRecords = function(records) {
+  const $tableHead = $(`
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  `);
+  $('#records').append($tableHead);
+
    for (const record of records) {
      const $record = createRecordElement(record);
      $('#records').append($record);

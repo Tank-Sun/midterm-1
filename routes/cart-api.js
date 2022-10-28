@@ -3,7 +3,7 @@ const router  = express.Router();
 const foodQueries = require('../db/queries/cart');
 
 
-// show all the choosen foods
+// get data of all the choosen foods
 router.get('/', (req, res) => {
   const id = req.session.user_id;
   foodQueries.getFoods(id)
