@@ -6,7 +6,7 @@ html {
 }
 
 main {
-  margin-top: 200px;
+  margin-top: 220px;
   justify-content: center;
   align-items: center;
 }
@@ -36,11 +36,11 @@ body {
 }
 
 .card-title {
-  color: red;
+  color: blueviolet;
   font-size: 0.8em;
 }
 .card-text {
-  color: red;
+  color: blueviolet;
   font-size: 0.5em;
   font-style: italic;
 }
