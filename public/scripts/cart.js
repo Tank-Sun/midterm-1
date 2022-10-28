@@ -14,6 +14,7 @@ $(document).ready(function() {
                 <input
                   type="number"
                   name="newQuantity"
+                  min=1
                 />
                 <button id="quantity_button" type="submit">Edit</button>
             </form>

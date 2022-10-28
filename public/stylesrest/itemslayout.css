@@ -10,6 +10,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  margin-top: 300px;
   justify-content: center;
   align-items: flex-start;
   position: relative;
