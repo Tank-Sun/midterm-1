@@ -6,8 +6,13 @@
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/stylesrest/restaurant-itemslayout.css" type="text/css" />
@@ -25,13 +30,13 @@
   <main class="container">
 
     <div id="listfoods"> <% for (let id in urls) { %>
-      <div class="card" style="width: 20rem">
-        <img width="360" height="240" src="<%= urls[id].picture %>" class="card-img-top">
+      <div class="card" style="width: 420px">
+        <img width="420" height="300" src="<%= urls[id].picture %>" class="card-img-top">
         <div class="card-body">
           <h4 class="card-title"><%= urls[id].name %></h4>
           <p class="card-text">PRICE: $<%= urls[id].price %></p>
           <form method="GET" action='/restaurant/<%= urls[id].id%>'>
-            <button type="submit" class="btn btn-primary">Select</button>
+            <button id="button" type="submit" class="btn btn-primary">Select</button>
           </form>
         </div>
       </div>

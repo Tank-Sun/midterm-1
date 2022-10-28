@@ -26,6 +26,19 @@ body {
   /* font-size: 20px; */
 }
 
+#button {
+  padding: 10px;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #0b0b0b;
+  background-color: #f7f7f2;
+  color: blueviolet;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: large;
+  font-style: inherit;
+  font-weight: 600;
+}
+
 #listfoods {
   display: flex;
   flex-wrap: wrap;
