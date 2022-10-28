@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   db.query(query)
     .then(data => {
       const items = data.rows;
-      console.log(items);
+      // console.log(items);
       const templateVars = {urls:items};
       // res.json(items);
       res.render("restaurant-items", templateVars);
@@ -47,9 +47,9 @@ router.get('/:id', (req, res) => {
   WHERE menuitems.id = $1;`,[req.params.id])
     .then(data => {
       const items = data.rows[0];
-      console.log(items);
+      // console.log(items);
       const templateVars = { items: items};
-      console.log('templateVars',templateVars);
+      // console.log('templateVars',templateVars);
       // res.json(items);
       res.render("items", templateVars);
     })
@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   orderQueries.checkCart()
     .then((result) => {
-      console.log('result:', result);
+      // console.log('result:', result);
       if (!result) {
         orderQueries.createOrder();
       }

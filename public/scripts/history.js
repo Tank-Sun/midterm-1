@@ -23,7 +23,7 @@ $(document).ready(function() {
             <td>${record.id}</td>
             <td>${startTime}</td>
             <td>${endTime}</td>
-            <td>Pending</td>
+            <td style="color:red">Pending</td>
           </tr>
         </tbody>
      `);

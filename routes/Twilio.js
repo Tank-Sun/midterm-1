@@ -4,13 +4,15 @@
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+const TwilioNumber = process.env.TWILIO_NUMBER;
+const realNumber = process.env.REAL_NUMBER;
 
 const sendMessageToOwner = (id, time) => {
   return client.messages
     .create({
       body: `You got a new order at ${time}. The order ID is ${id}.`,
-      from: '+14634002509',
-      to: '+15879301260'
+      from: TwilioNumber,
+      to: realNumber
     })
     .then(message => console.log(message.sid));
 };
