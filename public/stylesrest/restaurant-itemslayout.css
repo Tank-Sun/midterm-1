@@ -36,11 +36,11 @@ body {
 }
 
 .card-title {
-  color: blueviolet;
+  color: rgb(245, 9, 9);
   font-size: 0.8em;
 }
 .card-text {
-  color: blueviolet;
+  color: rgb(248, 14, 14);
   font-size: 0.5em;
   font-style: italic;
 }
