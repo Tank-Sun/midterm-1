@@ -21,8 +21,8 @@ const sendTimeToClient = (time) => {
   return client.messages
     .create({
       body: `We received your order, it will be ready in about ${time} minutes.`,
-      from: '+14634002509',
-      to: '+15879301260'
+      from: TwilioNumber,
+      to: realNumber
     })
     .then(message => console.log(message.sid));
 };
@@ -31,8 +31,8 @@ const sendMessageToClient = (address) => {
   return client.messages
     .create({
       body: `Your order is ready for pickup. Our address is ${address}.`,
-      from: '+14634002509',
-      to: '+15879301260'
+      from: TwilioNumber,
+      to: realNumber
     })
     .then(message => console.log(message.sid));
 };
