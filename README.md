@@ -30,8 +30,9 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
-7. Run the server: `npm run local`
+6. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
+7. Visit `http://localhost:8080/login/1` to login as the user with user.id=1
 
 ## ERD
 
